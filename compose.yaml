@@ -7,7 +7,7 @@ services:
     container_name: paseo
     restart: unless-stopped
     # 1. Forzamos a Paseo a escuchar en todas las interfaces (0.0.0.0) en el puerto 6767
-    command: daemon start --web-ui --listen 0.0.0.0:6767
+    # command: daemon start --web-ui --listen 0.0.0.0:6767
     environment:
       PASEO_PASSWORD: "${PASEO_PASSWORD}"
       PASEO_HOST: "http://127.0.0.1:6767"
