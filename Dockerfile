@@ -23,3 +23,17 @@ RUN mkdir -p /home/paseo/.config/opencode \
     && cp /tmp/opencode-agents.md /home/paseo/.config/opencode/AGENTS.md \
     && rm /tmp/opencode-agents.md \
     && chown -R paseo:paseo /home/paseo/.config
+
+
+# --- Permisos correctos para el usuario no-root `paseo` ---
+# PRE-creamos todos los directorios de runtime (logs, cache, mise, config de
+# opencode) con owner `paseo:paseo`. Así, aunque un comando manual corra como
+# root, estas carpetas ya existen con los permisos correctos y opencode/mise
+# pueden escribirlas sin PermissionDenied. (Los mounts de volúmenes del
+# entrypoint base respetan content a estos paths si ya existen.)
+RUN mkdir -p \
+      /home/paseo/.config/opencode \
+      /home/paseo/.local/share/opencode/log \
+      /home/paseo/.cache/opencode \
+      /home/paseo/.local/share/mise \
+    && chown -R paseo:paseo /home/paseo
