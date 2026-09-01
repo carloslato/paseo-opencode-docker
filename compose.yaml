@@ -6,8 +6,6 @@ services:
     image: paseo-with-agents:latest
     container_name: paseo
     restart: unless-stopped
-    ports:
-      - "6767:6767"
     environment:
       PASEO_PASSWORD: "${PASEO_PASSWORD}"
       # PASEO_HOSTNAMES: "${PASEO_HOSTNAMES}"
